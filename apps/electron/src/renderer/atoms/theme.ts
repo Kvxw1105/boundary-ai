@@ -100,6 +100,8 @@ const ALL_THEME_STYLE_CLASSES = [
   'theme-forest-dark',
   'theme-slate-light',
   'theme-slate-dark',
+  'theme-legal-light',
+  'theme-legal-dark',
 ] as const
 
 /**

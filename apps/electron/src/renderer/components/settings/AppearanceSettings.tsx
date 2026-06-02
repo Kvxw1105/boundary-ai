@@ -126,6 +126,18 @@ const SPECIAL_STYLES: readonly SpecialStyle[] = [
     imageScale: 1.15,
     objectPosition: '44% 58%',
   },
+  {
+    id: 'legal-light',
+    name: '明镜高悬',
+    variant: 'light',
+    image: themeOceanLight,
+  },
+  {
+    id: 'legal-dark',
+    name: '正大光明',
+    variant: 'dark',
+    image: themeOceanDark,
+  },
 ]
 
 /** 各主题遮罩颜色（实心背景 + 浅色文字，与 CSS --primary 对应） */
@@ -136,6 +148,8 @@ const STYLE_MASK_COLORS: Record<SpecialStyleId, { bg: string; text: string }> = 
   'ocean-dark':   { bg: 'rgba(0,0,0,0.8)', text: 'hsl(205, 50%, 82%)' },
   'forest-dark':  { bg: 'rgba(0,0,0,0.8)', text: 'hsl(150, 35%, 75%)' },
   'slate-dark':   { bg: 'rgba(0,0,0,0.8)', text: 'hsl(18, 20%, 88%)' },
+  'legal-light':  { bg: 'hsl(222, 55%, 35%)', text: 'hsl(220, 40%, 88%)' },
+  'legal-dark':   { bg: 'rgba(0,0,0,0.8)', text: 'hsl(43, 50%, 72%)' },
 }
 
 /** 图标变体定义 */

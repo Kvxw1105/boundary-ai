@@ -300,6 +300,74 @@
     --dashed-border: 15 25% 68% / 0.30;
     --dashed-border-hover: 15 25% 68% / 0.45;
   }
+
+  /* ===== BoundaryAI 法律主题 ===== */
+  /* 明镜高悬 (legal-light) — 庄严蓝金，法律领域专业感 */
+
+  .theme-legal-light {
+    --background: 220 25% 96%;            /* #f2f4f7 背景 */
+    --foreground: 220 40% 12%;            /* #121a2a 前景文字 */
+    --content-area: 220 15% 98%;          /* #fafbfc 内容区域 */
+    --muted: 220 15% 91%;                 /* #e4e8ed 次要背景 */
+    --muted-foreground: 220 12% 48%;      /* #6e7a8d 次要文字 */
+    --border: 220 15% 84%;                /* #d0d6de 边框 */
+    --primary: 222 55% 35%;               /* #274a89 法律蓝主色 */
+    --primary-foreground: 0 0% 100%;      /* #ffffff 主色前景 */
+    --secondary: 220 15% 93%;             /* #eaecf1 二级背景 */
+    --secondary-foreground: 222 50% 20%;  /* #192d54 二级前景 */
+    --accent: 43 50% 88%;                 /* #f0e6c8 金强调背景 */
+    --accent-foreground: 222 50% 28%;     /* #1e3a6b 强调文字 */
+    --ring: 222 55% 35%;                  /* #274a89 聚焦环 */
+    --card: 220 15% 98%;                  /* #fafbfc 卡片背景 */
+    --card-foreground: 220 40% 12%;       /* #121a2a 卡片前景 */
+    --input: 220 15% 93%;                 /* #eaecf1 输入框背景 */
+    --popover: 220 15% 98%;               /* #fafbfc 弹出层 */
+    --popover-foreground: 220 40% 12%;    /* #121a2a 弹出前景 */
+    --dialog: 0 0% 100%;                  /* #ffffff 弹窗背景 */
+    --dialog-foreground: 220 40% 12%;     /* #121a2a 弹窗前景 */
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --stop-hover-bg: hsla(0, 70%, 50%, 0.12);
+    --tooltip: 222 50% 20%;               /* #192d54 Tooltip */
+    --tooltip-foreground: 0 0% 98%;
+    --tooltip-muted: 220 20% 70%;
+    --code-bg: 222 40% 12%;               /* 深法律蓝 */
+    --dashed-border: 222 55% 35% / 0.30;
+    --dashed-border-hover: 222 55% 35% / 0.48;
+  }
+
+  /* 正大光明 (legal-dark) — 暗金蓝调，权威庄重 */
+  .theme-legal-dark {
+    --background: 222 35% 9%;             /* #0e1524 背景 */
+    --foreground: 220 12% 90%;            /* #e2e6ed 前景文字 */
+    --content-area: 222 38% 5%;           /* #080d18 内容区域 */
+    --muted: 222 20% 13%;                 /* #1a2231 次要背景 */
+    --muted-foreground: 220 12% 55%;      /* #818ca0 次要文字 */
+    --border: 222 20% 16%;                /* #202b3d 边框 */
+    --primary: 43 55% 52%;                /* #c9a435 法律金主色 */
+    --primary-foreground: 222 35% 6%;     /* #0a1020 主色前景 */
+    --secondary: 222 20% 15%;             /* #1e2a3a 二级背景 */
+    --secondary-foreground: 220 12% 90%;  /* #e2e6ed 二级前景 */
+    --accent: 222 50% 18%;                /* #142140 强调背景 */
+    --accent-foreground: 43 50% 65%;      /* #dab548 强调文字 */
+    --ring: 43 55% 52%;                   /* #c9a435 聚焦环 */
+    --card: 222 30% 10%;                  /* #121b2a 卡片背景 */
+    --card-foreground: 220 12% 90%;       /* #e2e6ed 卡片前景 */
+    --input: 222 20% 13%;                 /* #1a2231 输入框背景 */
+    --popover: 222 30% 11%;               /* #151f31 弹出层 */
+    --popover-foreground: 220 12% 90%;    /* #e2e6ed 弹出前景 */
+    --dialog: 222 25% 14%;                /* #1a2435 弹窗背景 */
+    --dialog-foreground: 220 12% 90%;     /* #e2e6ed 弹窗前景 */
+    --destructive: 0 58% 42%;
+    --destructive-foreground: 0 0% 98%;
+    --stop-hover-bg: hsl(0, 35%, 16%);
+    --tooltip: 222 28% 18%;               /* #1f2d42 Tooltip */
+    --tooltip-foreground: 0 0% 98%;
+    --tooltip-muted: 220 15% 65%;
+    --code-bg: 222 40% 6%;                /* 深法律蓝黑 */
+    --dashed-border: 43 50% 55% / 0.32;
+    --dashed-border-hover: 43 50% 55% / 0.50;
+  }
 }
 
 @layer base {
@@ -387,6 +455,11 @@
     0 0 40px 8px rgba(255, 255, 255, 0.06),
     0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
+.theme-legal-dark [data-radix-dialog-content] {
+  box-shadow:
+    0 0 40px 10px rgba(201, 164, 53, 0.08),
+    0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
 
 /* 特殊主题外层缝隙背景色覆盖 */
 .theme-ocean-light .shell-bg { background: linear-gradient(135deg, hsl(205 35% 88%) 0%, hsl(205 30% 91%) 100%); }
@@ -395,6 +468,8 @@
 .theme-forest-dark .shell-bg { background: linear-gradient(135deg, hsl(150 20% 5%) 0%, hsl(150 18% 7%) 100%); }
 .theme-slate-light .shell-bg { background: linear-gradient(135deg, hsl(40 6% 84%) 0%, hsl(40 6% 86%) 100%); }
 .theme-slate-dark .shell-bg  { background: linear-gradient(135deg, hsl(270 10% 7%) 0%, hsl(260 8% 9%) 100%); }
+.theme-legal-light .shell-bg { background: linear-gradient(135deg, hsl(220 20% 92%) 0%, hsl(220 15% 94%) 100%); }
+.theme-legal-dark .shell-bg  { background: linear-gradient(135deg, hsl(222 35% 5%) 0%, hsl(222 30% 7%) 100%); }
 
 /* ===== 特殊主题：模式切换器选中状态 ===== */
 /* 晴空碧海：蓝色背景滑块 + 白色文字 */
@@ -517,6 +592,46 @@
 .theme-slate-dark .session-item-selected *,
 .theme-slate-dark .workspace-item-selected *,
 .theme-slate-dark .tab-item-selected * {
+  color: inherit !important;
+}
+
+/* ===== 法律主题：模式切换器 ===== */
+.theme-legal-light .mode-slider {
+  background: hsl(222 55% 35%) !important;   /* #274a89 法律蓝 */
+  box-shadow: 0 2px 4px rgba(39, 74, 137, 0.35);
+}
+.theme-legal-light .mode-btn-selected {
+  color: #ffffff !important;
+}
+.theme-legal-dark .mode-slider {
+  background: hsl(43 55% 52%) !important;    /* #c9a435 法律金 */
+  box-shadow: 0 2px 4px rgba(201, 164, 53, 0.4);
+}
+.theme-legal-dark .mode-btn-selected {
+  color: hsl(222 35% 6%) !important;         /* 深底色文字 */
+}
+
+/* ===== 法律主题：会话/工作区选中状态 ===== */
+.theme-legal-light .session-item-selected,
+.theme-legal-light .workspace-item-selected,
+.theme-legal-light .tab-item-selected {
+  background: hsl(222 40% 82%) !important;
+  color: hsl(222 55% 25%) !important;
+}
+.theme-legal-light .session-item-selected *,
+.theme-legal-light .workspace-item-selected *,
+.theme-legal-light .tab-item-selected * {
+  color: inherit !important;
+}
+.theme-legal-dark .session-item-selected.session-item-selected,
+.theme-legal-dark .workspace-item-selected.workspace-item-selected,
+.theme-legal-dark .tab-item-selected.tab-item-selected {
+  background-color: hsl(222 40% 18%) !important;
+  color: hsl(43 50% 72%) !important;
+}
+.theme-legal-dark .session-item-selected *,
+.theme-legal-dark .workspace-item-selected *,
+.theme-legal-dark .tab-item-selected * {
   color: inherit !important;
 }
 
@@ -1418,4 +1533,254 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ===== 境图 BoundaryAI 法律报告专用样式 ===== */
+
+/* 法律报告容器 — 卡片式布局，蓝金边框 */
+.legal-report {
+  margin: 1.25em 0;
+  border: 1px solid hsl(222 40% 72% / 0.35);
+  border-radius: 10px;
+  background: hsl(220 25% 98% / 0.4);
+  overflow: hidden;
+}
+
+.dark .legal-report,
+[class*="theme-"] .legal-report {
+  border-color: hsl(222 30% 38% / 0.35);
+  background: hsl(222 30% 10% / 0.4);
+}
+
+/* 法律报告标题栏 */
+.legal-report-header {
+  padding: 12px 16px;
+  background: linear-gradient(135deg, hsl(222 55% 35% / 0.08), hsl(43 50% 55% / 0.05));
+  border-bottom: 1px solid hsl(222 40% 72% / 0.2);
+  font-weight: 600;
+  font-size: 0.9em;
+  color: hsl(222 50% 25%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark .legal-report-header,
+[class*="theme-"] .legal-report-header {
+  background: linear-gradient(135deg, hsl(222 55% 35% / 0.15), hsl(43 50% 55% / 0.08));
+  color: hsl(43 50% 70%);
+}
+
+/* 法律报告内容区 */
+.legal-report-body {
+  padding: 16px;
+}
+
+/* 法律对比表格 */
+.legal-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875em;
+  margin: 0.75em 0;
+  border: 1px solid hsl(222 15% 82% / 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dark .legal-table,
+[class*="theme-"] .legal-table {
+  border-color: hsl(222 20% 22% / 0.6);
+}
+
+.legal-table thead th {
+  background: hsl(222 40% 35% / 0.09);
+  color: hsl(222 50% 25%);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid hsl(222 40% 60% / 0.3);
+  font-size: 0.82em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.dark .legal-table thead th,
+[class*="theme-"] .legal-table thead th {
+  background: hsl(222 30% 15% / 0.6);
+  color: hsl(220 15% 82%);
+  border-bottom-color: hsl(222 30% 30% / 0.4);
+}
+
+.legal-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid hsl(222 15% 85% / 0.3);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.dark .legal-table td,
+[class*="theme-"] .legal-table td {
+  border-bottom-color: hsl(222 20% 18% / 0.3);
+}
+
+.legal-table tr:last-child td {
+  border-bottom: none;
+}
+
+.legal-table tr:nth-child(even) td {
+  background: hsl(220 20% 96% / 0.3);
+}
+
+.dark .legal-table tr:nth-child(even) td,
+[class*="theme-"] .legal-table tr:nth-child(even) td {
+  background: hsl(222 25% 12% / 0.3);
+}
+
+/* 法律表格首列（法律名称列） */
+.legal-table td:first-child {
+  font-weight: 600;
+  color: hsl(222 50% 30%);
+  min-width: 120px;
+}
+
+.dark .legal-table td:first-child,
+[class*="theme-"] .legal-table td:first-child {
+  color: hsl(43 40% 65%);
+}
+
+/* 风险等级徽章 */
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.risk-high {
+  background: hsl(0 75% 49% / 0.12);
+  color: hsl(0 75% 42%);
+  border: 1px solid hsl(0 75% 49% / 0.25);
+}
+
+.dark .risk-high,
+[class*="theme-"] .risk-high {
+  background: hsl(0 65% 45% / 0.18);
+  color: hsl(0 80% 65%);
+  border-color: hsl(0 65% 45% / 0.3);
+}
+
+.risk-medium {
+  background: hsl(38 85% 50% / 0.12);
+  color: hsl(38 85% 35%);
+  border: 1px solid hsl(38 85% 50% / 0.25);
+}
+
+.dark .risk-medium,
+[class*="theme-"] .risk-medium {
+  background: hsl(38 75% 45% / 0.18);
+  color: hsl(38 90% 62%);
+  border-color: hsl(38 75% 45% / 0.3);
+}
+
+.risk-low {
+  background: hsl(150 50% 40% / 0.1);
+  color: hsl(150 50% 30%);
+  border: 1px solid hsl(150 50% 40% / 0.2);
+}
+
+.dark .risk-low,
+[class*="theme-"] .risk-low {
+  background: hsl(150 45% 42% / 0.15);
+  color: hsl(150 55% 58%);
+  border-color: hsl(150 45% 42% / 0.28);
+}
+
+/* 法律条文引用块 */
+.legal-citation {
+  border-left: 3px solid hsl(222 55% 50% / 0.4);
+  padding: 6px 14px;
+  margin: 0.5em 0;
+  font-size: 0.875em;
+  color: hsl(222 30% 38%);
+  background: hsl(222 40% 60% / 0.05);
+  border-radius: 0 6px 6px 0;
+}
+
+.dark .legal-citation,
+[class*="theme-"] .legal-citation {
+  border-left-color: hsl(43 50% 55% / 0.35);
+  color: hsl(220 15% 72%);
+  background: hsl(222 25% 15% / 0.3);
+}
+
+/* 合规路径卡片 */
+.legal-path {
+  border: 1px solid hsl(222 15% 82% / 0.4);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 0.6em 0;
+  background: hsl(220 20% 97% / 0.5);
+}
+
+.dark .legal-path,
+[class*="theme-"] .legal-path {
+  border-color: hsl(222 20% 22% / 0.4);
+  background: hsl(222 25% 12% / 0.3);
+}
+
+.legal-path-recommended {
+  border-color: hsl(150 50% 45% / 0.35);
+  background: hsl(150 40% 50% / 0.06);
+}
+
+.dark .legal-path-recommended,
+[class*="theme-"] .legal-path-recommended {
+  border-color: hsl(150 45% 40% / 0.4);
+  background: hsl(150 35% 18% / 0.2);
+}
+
+/* 免责声明区块 */
+.legal-disclaimer {
+  margin-top: 1.5em;
+  padding: 12px 16px;
+  border: 1px dashed hsl(38 70% 60% / 0.4);
+  border-radius: 8px;
+  background: hsl(38 70% 55% / 0.05);
+  font-size: 0.8em;
+  color: hsl(220 15% 48%);
+  line-height: 1.6;
+}
+
+.dark .legal-disclaimer,
+[class*="theme-"] .legal-disclaimer {
+  border-color: hsl(38 50% 50% / 0.35);
+  background: hsl(38 30% 15% / 0.15);
+  color: hsl(220 12% 60%);
+}
+
+/* 法域标签 */
+.jurisdiction-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 500;
+  background: hsl(222 40% 60% / 0.1);
+  color: hsl(222 50% 35%);
+  border: 1px solid hsl(222 40% 60% / 0.2);
+}
+
+.dark .jurisdiction-tag,
+[class*="theme-"] .jurisdiction-tag {
+  background: hsl(222 35% 38% / 0.2);
+  color: hsl(220 20% 78%);
+  border-color: hsl(222 35% 38% / 0.3);
 }

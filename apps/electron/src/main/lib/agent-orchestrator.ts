@@ -56,6 +56,51 @@ import { searchMemory, addMemory, formatSearchResult } from './memos-client'
 import { validateToolInput } from './agent-tool-input-validator'
 import { estimateTokenCount, WRITE_CONTENT_TOKEN_THRESHOLD } from './agent-tool-token-estimator'
 
+// ===== BoundaryAI 法律域识别 =====
+
+/** 法律域关键词映射 */
+const LEGAL_DOMAIN_KEYWORDS: Record<string, string[]> = {
+  'cross-border-legal': ['合规冲突', '跨境合规', '法律冲突', '中国法', '外国法', '法域', '法律差异', '双重合规', '合规两难'],
+  'contract-conflict-scan': ['合同', '条款', '协议', '审查', '审核', '不可执行', 'contract', '违约金', '管辖', '准据法'],
+  'data-export-assessment': ['数据出境', '数据传输', '跨境数据', '安全评估', 'PIPL', 'GDPR', 'CCPA', '标准合同', 'SCC', 'DPIA', '个人信息', '数据保护', '数据隐私'],
+  'sanctions-screening': ['制裁', '实体清单', 'SDN', '出口管制', 'EAR', 'OFAC', '禁运', '管制', '反制裁', 'BIS', '军事终端用户'],
+  'labor-law-comparison': ['劳动法', '雇佣', '劳动合同', '竞业限制', '解雇', '社保', '外派', '工会', '最低工资', '年假', '病假', '产假', '试用期', '员工', '人力'],
+}
+
+/** 检测消息中的法律域 */
+function detectLegalDomains(message: string): string[] {
+  const domains: string[] = []
+  for (const [domain, keywords] of Object.entries(LEGAL_DOMAIN_KEYWORDS)) {
+    if (keywords.some(kw => message.includes(kw))) {
+      domains.push(domain)
+    }
+  }
+  return domains
+}
+
+/** 构建 BoundaryAI 法律域上下文注入 */
+function buildBoundaryAIContext(userMessage: string, workspaceSlug?: string): string | null {
+  const domains = detectLegalDomains(userMessage)
+  if (domains.length === 0) return null
+
+  const skillRefs = domains.map(d => {
+    const qualifiedName = workspaceSlug ? `proma-workspace-${workspaceSlug}:${d}` : d
+    return `- \`${qualifiedName}\``
+  }).join('\n')
+
+  return `<boundary_ai_legal_context>
+检测到以下法律域：${domains.join('、')}
+
+作为境图 BoundaryAI 跨境合规 Agent，请在回复中：
+1. 识别涉及的法域（中国/欧盟/美国等）
+2. 自动加载对应的法律 Skill
+3. 输出结构化的法律分析报告（冲突矩阵 + 风险评级 + 法条引用 + 合规路径）
+
+可用 Skills：
+${skillRefs}
+</boundary_ai_legal_context>`
+}
+
 // ===== 类型定义 =====
 
 /**
@@ -1247,6 +1292,13 @@ export class AgentOrchestrator {
         }
         enrichedMessage = `<mentioned_tools>\n${toolLines.join('\n')}\n</mentioned_tools>\n\n${userMessage}`
         console.log(`[Agent 编排] 注入 mentioned_tools: ${mentionedSkills?.length ?? 0} skills, ${mentionedMcpServers?.length ?? 0} MCP`)
+      }
+
+      // 11.6 注入 BoundaryAI 法律域上下文（自动检测法律关键词 → 注入 Skill 路由指引）
+      const boundaryAICtx = buildBoundaryAIContext(enrichedMessage, workspaceSlug)
+      if (boundaryAICtx) {
+        enrichedMessage = `${boundaryAICtx}\n\n${enrichedMessage}`
+        console.log(`[BoundaryAI] 检测到法律域，已注入 Skill 路由指引`)
       }
 
       const contextualMessage = `${dynamicCtx}\n\n${enrichedMessage}`
